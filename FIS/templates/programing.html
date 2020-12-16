@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'base.html'%}
+    {% block body %}
+
+        <link rel="stylesheet" type="text/css" href="http://cdn.pydata.org/bokeh/release/bokeh-2.0.2.min.css"/>
+        <link rel="stylesheet" type="text/css" href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.2.min.css"/>
+        <link rel="stylesheet" type="text/css" href="http://cdn.pydata.org/bokeh/release/bokeh-tables-2.0.2.min.css"/>
+
+
+     <style>
+h1{
+	border:1px solid #3498db;
+	padding:40px;
+	background-color:white		;
+	text-align:center;
+	border-color:#FAFAD2		;
+}
+
+     </style>
+    <title>Fis-Dashboard</title>
+</head>
+<body>
+<br>
+<br>
+   <h1 style="color:black">Model DeskPhoneHeadset </h1>
+
+
+    {{div| safe}}
+
+</body>
+
+    <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-2.0.2.min.js"></script>
+    <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.2.min.js"></script>
+    <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-tables-2.0.2.min.js"></script>
+    <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-api-2.0.2.min.js"></script>
+    {{script | safe}}
+</html>
+{% endblock %}

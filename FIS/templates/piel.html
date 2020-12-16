@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'base.html'%}
+    {% block body %}
+        <link rel="stylesheet" type="text/css" href="http://cdn.pydata.org/bokeh/release/bokeh-2.0.2.min.css"/>
+        <link rel="stylesheet" type="text/css" href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.2.min.css"/>
+        <link rel="stylesheet" type="text/css" href="http://cdn.pydata.org/bokeh/release/bokeh-tables-2.0.2.min.css"/>
+
+
+     <style>
+h1{
+	border:1px solid #3498db;
+	padding:40px;
+	background-color:white		;
+	text-align:center;
+	border-color:#FAFAD2		;
+}
+  body{
+  margin: 0;
+  padding: 0;
+}
+.containerr{
+  text-align: center;
+  margin-top: 50px;
+}
+.btn{
+  border: 1px solid #3498db;
+  background: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-family: "montserrat";
+  cursor: pointer;
+  margin: 10px;
+  transition: 0.8s;
+  position: relative;
+  overflow: hidden;
+}
+.btn1,.btn2{
+  color: #3498db;
+}
+.btn3,.btn4{
+  color: #fff;
+}
+.btn1:hover,.btn2:hover{
+  color: #fff;
+}
+.btn3:hover,.btn4:hover{
+  color: #3498db;
+}
+.btn::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: #3498db;
+  z-index: -1;
+  transition: 0.8s;
+}
+.btn1::before,.btn3::before{
+  top: 0px;
+  border-radius: 0 0 50% 50%;
+}
+.btn2::before,.btn4::before{
+  bottom: 0;
+  border-radius: 50% 50% 0 0;
+}
+.btn3::before,.btn4::before{
+  height: 180%;
+}
+.btn1:hover::before,.btn2:hover::before{
+  height: 180%;
+}
+.btn3:hover::before,.btn4:hover::before{
+  height: 0%;
+}
+
+     </style>
+    <title>Fis-Dashboard</title>
+</head>
+<body>
+
+  <!-- <nav style="border:1 px">
+
+  <a href="{% url 'model_name' %}"><button type="button" class="btn btn-outline-primary">Model Name</button></a>
+
+    <a href="{% url 'model_Usb_Headset' %}"><button type="button" class="btn btn-outline-secondary">Model USB Headset</button></a>
+
+    <a href="{% url 'model_Brand_name' %}"><button type="button" class="btn btn-outline-success">Model Brand Name</button></a>
+    <a href="{% url 'principal_chart' %}"><button type="button" class="btn btn-outline-danger">Model Parent Name</button></a>
+    <a href="{% url 'products' %}"><button type="button" class="btn btn-outline-warning">Screen_1 Model</button></a>
+    <a href="{% url 'programming' %}"><button type="button" class="btn btn-outline-info">Model Deskphone Headset</button></a>
+    <a href="{% url 'model_name' %}"><button type="button" class="btn btn-light">Docking Station</button></a>
+    <a href="{% url 'model_name' %}"><button type="button" class="btn btn-outline-dark">Warranty Status</button></a>
+    <a href="{% url 'model_name' %}"><button type="button" class="btn btn-success">Warranty End Date</button></a>
+    <a href="{% url 'model_name' %}"><button type="button" class="btn btn-light">Results</button></a>
+
+</nav> -->
+   <h1 style="color:#008B8B">Model Brand name(Laptops) </h1>
+   <div class="containerr">
+       <a href="{% url 'model_Brand_name' %}"><button type="" class="btn btn1" name="button">DELL</button></a>
+       <a href="{% url 'Dell_HP_desk' %}"><button type="" class="btn btn1" name="button">Hewlett Packard</button></a>
+
+        </div>
+
+
+    {{div| safe}}
+
+</body>
+
+    <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-2.0.2.min.js"></script>
+    <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.2.min.js"></script>
+    <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-tables-2.0.2.min.js"></script>
+    <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-api-2.0.2.min.js"></script>
+    {{script | safe}}
+</html>
+
+   {% endblock %}

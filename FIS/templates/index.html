@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% extends 'base.html' %}
+    {% csrf_token %}
+    {% block body %}
+    {% load static %}
+
+
+    <script  src="{% static 'js/table.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/dataset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"><!-- css link -->
+    <script  type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js">
+    </script> <!-- Jquery link -->
+    <script  type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js">
+    </script> <!-- Table jquery link -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Data Tables</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+
+<div class="button-group" align="center" >
+    <a href="{% url 'display_laptops' %}" class="btn btn-primary " role="button">Laptops</a>
+    <a href="{% url 'add_laptop' %}" class="btn btn-warning btn-sm" role="button">+</a>
+    <a href="{% url 'display_desktops' %}" class="btn btn-primary btn-md" role="button">Desktops</a>
+    <a href="{% url 'add_desktop' %}" class="btn btn-warning btn-sm" role="button">+</a>
+
+</div>
+<br>
+<nav align="center">
+<h4 style="color:blue">Currently Viewing {{header}}</h4>
+    </nav>
+<div class="table-responsive">
+<table class="table table-fluid" id="myTable" style="color:#0B0B61; margin-left:0px;top:10;background-color:dark" >
+
+    <thead style="color:#1EA4F7;background-color:#CEE3F6">
+    <tr>
+        <th>id</th>
+        <th>eNumber</th>
+        <!--th>Assigned.User</th-->
+        <th>Seniorty.Date</th>
+        <th>Computer.Name</th>
+        <!--th>Asset.Tag</th-->
+        <!--th>Service.Tag</th-->
+        <th>Name(model)</th>
+        <th>Warranty.EndDate(Asset)</th>
+        <th>Warranty.Status</th>
+        <th>Name(Model.Brand)</th>
+        <!--th>Name(Model.Parent)</th-->
+        <th>Docking.Station</th>
+        <!--th>Screen1.Model</th-->
+        <!--th>Secreen1.ServiceTag</th-->
+        <!--th>Screen2.Model</th-->
+        <!--th>Secreen2.ServiceTag</th-->
+        <th>Model.USBHeadset</th>
+        <!--th>SN.USBheadset</th-->
+        <th>Model.DeskphoneHeadset</th>
+        <!--th>SN.DeskphoneHeadset</th-->
+        <th>Cogs</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+    <tr>
+        <td>{{ item.pk }}</td>
+        <td>{{ item.eNumber }}</td>
+        <!--td>{{ item.Assigned_User }}</td-->
+        <td>{{ item.Seniorty_Date }}</td>
+        <td>{{ item.Computer_Name }}</td>
+        <!--td>{{ item.Asset_Tag }}</td-->
+        <!--td>{{ item.Service_Tag }}</td-->
+        <td>{{ item.Model_Name }}</td>
+        <td>{{ item.Warranty_EndDate }}</td>
+        <td> {{item.Warranty_Status}} </td>
+        <td>{{item.ModelBrand_Name}}</td>
+        <!--td>{{ item.ModelParent_Name }}</td-->
+        <td>{{ item.Docking_Station }}</td>
+        <!--td>{{ item.Secreen1_Model }}</td-->
+        <!--td>{{ item.Secreen1_ServiceTag }}</td-->
+        <!--td>{{ item.Secreen2_Model }}</td-->
+        <!--td>{{item.Secreen2_ServiceTag}}</td-->
+        <td>{{ item.Model_USBheadset }}</td>
+        <!--td>{{ item.SN_USBheadset }}</td-->
+        <td>{{ item.Model_DeskPhoneHeadset }}</td>
+        <!--td>{{ item.SN_DeskPhone }}</td-->
+        {% if header|lower == "laptops" %}
+
+        <td>
+            <a href="{% url 'edit_laptop' item.pk %}" class="btn btn-warning btn-sm" role="button">EDIT</a>
+            <a href="{% url 'delet_laptop' item.pk %}" class="btn btn-danger btn-sm" role="button">x</a>
+        </td>
+        {% else %}
+        <td>
+            <a href="{% url 'edit_desktop' item.pk %}" class="btn btn-warning btn-sm" role="button">EDIT</a>
+            <a href="{% url 'delet_desktop' item.pk %}" class="btn btn-danger btn-sm" role="button">x</a>
+        </td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+    </tbody>
+</table>
+</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" ></script>
+<script>
+$(document).ready( function () {
+$('#myTable').DataTable();
+} );
+</script>
+{% endblock %}
+</body>
+</html>
